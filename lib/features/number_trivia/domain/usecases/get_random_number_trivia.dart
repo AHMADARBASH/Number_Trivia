@@ -3,11 +3,11 @@ import '../../../../core/error/failure.dart';
 import '../entities/number_trivia.dart';
 import '../repositories/number_trivia_repositoy.dart';
 
-class GetConcreteNumberTrivia {
+class GetRandomNumberTrivia {
   final NumberTriviaRepositoy repositoy;
-  GetConcreteNumberTrivia({required this.repositoy});
+  GetRandomNumberTrivia({required this.repositoy});
 
-  Future<Either<Failure, NumberTrivia>> call({required int number}) async {
-    return await repositoy.getConcreteNumberTrivia(number);
+  Future<Either<Failure, NumberTrivia>> call() async {
+    return await repositoy.getRandomNumberTrivia();
   }
 }
