@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:number_trivia/core/error/excpetions.dart';
-import '../../../../core/platform/network_info.dart';
-import '../datasources/number_trivia_local_data_source.dart';
-import '../datasources/number_trivia_remote_data_source.dart';
+
+import '../../../../core/error/excpetions.dart';
 import '../../../../core/error/failure.dart';
+import '../../../../core/network/network_info.dart';
 import '../../domain/entities/number_trivia.dart';
 import '../../domain/repositories/number_trivia_repositoy.dart';
+import '../datasources/number_trivia_local_data_source.dart';
+import '../datasources/number_trivia_remote_data_source.dart';
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepositoy {
   final NumberTriviaLocalDataSource localDataSource;
