@@ -24,10 +24,10 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepositoy {
     if (await networkInfo.isConntected) {
       try {
         final numberTrivia = await triviaFunction();
-        localDataSource.cacheNumberTrivia(numberTrivia);
+        await localDataSource.cacheNumberTrivia(numberTrivia);
         return Right(numberTrivia);
       } on ServerException {
-        return left(ServerFailure());
+        return Left(ServerFailure());
       }
     } else {
       try {
