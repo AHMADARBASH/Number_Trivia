@@ -1,15 +1,13 @@
 import 'dart:convert';
 
 import '../../../../core/error/excpetions.dart';
-import '../../domain/entities/number_trivia.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaLocalDataSource {
   Future<NumberTriviaModel> getLastNumberTrivia();
-  Future<void> cacheNumberTrivia(NumberTrivia numberTrivia);
+  Future<void> cacheNumberTrivia(NumberTriviaModel numberTrivia);
 }
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
@@ -17,8 +15,9 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
   NumberTriviaLocalDataSourceImpl({required this.cache});
 
   @override
-  Future<void> cacheNumberTrivia(NumberTrivia numberTrivia) async {
-    await cache.setString('cached_number_trivia', json.encode(numberTrivia));
+  Future<void> cacheNumberTrivia(NumberTriviaModel numberTrivia) async {
+    await cache.setString(
+        'cached_number_trivia', json.encode(numberTrivia.toJson()));
   }
 
   @override

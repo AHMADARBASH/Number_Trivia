@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
 
 import '../../../../core/error/excpetions.dart';
 import '../../../../core/error/failure.dart';
@@ -23,7 +24,8 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepositoy {
       Future<NumberTrivia> Function() triviaFunction) async {
     if (await networkInfo.isConntected) {
       try {
-        final numberTrivia = await triviaFunction();
+        final numberTrivia = await triviaFunction() as NumberTriviaModel;
+
         await localDataSource.cacheNumberTrivia(numberTrivia);
         return Right(numberTrivia);
       } on ServerException {
