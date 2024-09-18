@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:number_trivia/core/error/excpetions.dart';
-import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
-
-import '../../domain/entities/number_trivia.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../../core/error/excpetions.dart';
+import '../../domain/entities/number_trivia.dart';
+import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaRemoteDataSource {
   Future<NumberTrivia> getConcreteNumberTrivia(int number);
@@ -28,8 +28,13 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
   }
 
   @override
-  Future<NumberTrivia> getRandomNumberTrivia() {
-    // TODO: implement getRandomNumberTrivia
-    throw UnimplementedError();
+  Future<NumberTrivia> getRandomNumberTrivia() async {
+    final response = await client.get(Uri.parse('http://numbersapi/random'),
+        headers: {'Content-Type': 'application/json'});
+    if (response.statusCode == 200) {
+      return NumberTriviaModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 }
