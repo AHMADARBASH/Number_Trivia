@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
 
 import '../../../../core/error/excpetions.dart';
 import '../../../../core/error/failure.dart';
@@ -8,6 +7,7 @@ import '../../domain/entities/number_trivia.dart';
 import '../../domain/repositories/number_trivia_repositoy.dart';
 import '../datasources/number_trivia_local_data_source.dart';
 import '../datasources/number_trivia_remote_data_source.dart';
+import '../models/number_trivia_model.dart';
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepositoy {
   final NumberTriviaLocalDataSource localDataSource;
