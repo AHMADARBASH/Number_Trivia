@@ -18,7 +18,8 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
 
   @override
   Future<NumberTrivia> getConcreteNumberTrivia(int number) async {
-    final response = await client.get(Uri.parse('http://numbersapi/$number'),
+    final response = await client.get(
+        Uri.parse('http://numbersapi.com/$number'),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       return NumberTriviaModel.fromJson(json.decode(response.body));
