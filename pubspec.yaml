@@ -27,6 +27,10 @@ dependencies:
   http:
   shared_preferences:
   internet_connection_checker:
+  json_annotation: ^4.9.0
+  freezed_annotation: ^2.4.4
+  
+
 
   
 dev_dependencies:
@@ -40,6 +44,9 @@ dev_dependencies:
   
   
   flutter_lints: ^4.0.0
+  json_serializable: ^6.8.0
+  build_runner: ^2.4.12
+  freezed: ^2.5.7
 
 
 
